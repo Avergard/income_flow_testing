@@ -94,10 +94,22 @@ def test_create_invalid_good():
     assert error_data['code'] == "marshal_error"
 
 def test_create_duplicate_id():
-    good1 = {"id": 100, "name": "Test1", "description": "Test1", "count": 1, "weight": 1.0}
+    good1 = {
+        "id": 100,
+        "name": "Test1",
+        "description": "Test1",
+        "count": 1,
+        "weight": 1.0
+    }
     requests.post(f"{BASE_URL}/create", json=good1)
 
-    good2 = {"id": 100, "name": "Test2", "description": "Test2", "count": 2, "weight": 2.0}
+    good2 = {
+        "id": 100,
+        "name": "Test2",
+        "description": "Test2",
+        "count": 2,
+        "weight": 2.0
+    }
     response = requests.post(f"{BASE_URL}/create", json=good2)
     assert response.status_code == 400
     error_data = response.json()
