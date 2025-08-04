@@ -74,7 +74,6 @@ def test_delete_good(sample_good):
     get_response = requests.post(f"{BASE_URL}/get", json={"id": sample_good["id"]})
     assert get_response.status_code == 404
 
-
 def test_get_nonexistent_good():
     response = requests.post(f"{BASE_URL}/get", json={"id": 99999})
     assert response.status_code == 404
