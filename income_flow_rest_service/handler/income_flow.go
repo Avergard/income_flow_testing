@@ -130,7 +130,7 @@ func (h *Handler) DeleteGood(c fiber.Ctx) error {
 		})
 	}
 
-	state = append(state[:idx], state[idx:]...)
+	state = append(state[:idx], state[idx+1:]...)
 
 	return c.JSON(good)
 }
