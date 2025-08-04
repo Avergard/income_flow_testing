@@ -114,3 +114,9 @@ def test_create_duplicate_id():
     assert response.status_code == 400
     error_data = response.json()
     assert error_data['code'] == "User with this id already exists"
+
+def test_get_one_good_empty():
+    response = requests.post(f"{BASE_URL}/get", json={"id": None})
+    assert response.status_code == 422
+    error_data = response.json()
+    assert error_data['code'] == "Unprocessable Entity"
